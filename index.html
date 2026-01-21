@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Design Agency | Nairobi</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Scroll Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animate-from-left {
+            transform: translateX(-30px);
+        }
+
+        .animate-on-scroll.animate-from-right {
+            transform: translateX(30px);
+        }
+
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0);
+        }
+
+        /* Staggered animation delays */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+        .delay-400 { transition-delay: 0.4s; }
+        .delay-500 { transition-delay: 0.5s; }
+
+        /* Mobile menu animation */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* FAQ Accordion */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+
+        .faq-answer.open {
+            max-height: 500px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Card hover effects */
+        .portfolio-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+        }
+
+        /* WhatsApp floating button pulse */
+        .whatsapp-float {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+            50% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+        }
+
+        /* Pricing card highlight */
+        .pricing-popular {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-popular {
+                transform: scale(1);
+            }
+        }
+
+        /* Custom scrollbar for dark theme */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #111111;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333333;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444444;
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 bg-black/95 backdrop-blur-sm z-50 border-b border-[#222222]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 md:h-20">
+                <!-- Logo Placeholder -->
+                <!--a href="#home" class="flex items-center">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-white flex items-center justify-center">
+                         REPLACE WITH YOUR LOGO: Add <img src="your-logo.png" alt="Logo" class="w-full h-full object-contain">
+                    </div> </a> -->
+                    <span class="ml-3 font-semibold text-lg hidden sm:block text-white">QL3 MEDIA</span>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#home" class="text-sm font-medium text-white hover:text-gray-400 transition-colors">Home</a>
+                    <a href="#services" class="text-sm font-medium text-white hover:text-gray-400 transition-colors">Services</a>
+                    <a href="#portfolio" class="text-sm font-medium text-white hover:text-gray-400 transition-colors">Portfolio</a>
+                    <a href="#pricing" class="text-sm font-medium text-white hover:text-gray-400 transition-colors">Pricing</a>
+                    <a href="#process" class="text-sm font-medium text-white hover:text-gray-400 transition-colors">Process</a>
+                    <a href="#about" class="text-sm font-medium text-white hover:text-gray-400 transition-colors">About</a>
+                    <a href="#faq" class="text-sm font-medium text-white hover:text-gray-400 transition-colors">FAQ</a>
+                    <a href="#contact" class="bg-white text-black px-5 py-2.5 text-sm font-medium hover:bg-gray-200 transition-colors">Contact</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-white" aria-label="Toggle menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-64 h-full bg-black border-l border-[#222222] lg:hidden">
+            <div class="p-6">
+                <button id="mobile-menu-close" class="absolute top-4 right-4 p-2 text-white" aria-label="Close menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+                <div class="flex flex-col space-y-6 mt-12">
+                    <a href="#home" class="text-base font-medium text-white hover:text-gray-400 transition-colors mobile-nav-link">Home</a>
+                    <a href="#services" class="text-base font-medium text-white hover:text-gray-400 transition-colors mobile-nav-link">Services</a>
+                    <a href="#portfolio" class="text-base font-medium text-white hover:text-gray-400 transition-colors mobile-nav-link">Portfolio</a>
+                    <a href="#pricing" class="text-base font-medium text-white hover:text-gray-400 transition-colors mobile-nav-link">Pricing</a>
+                    <a href="#process" class="text-base font-medium text-white hover:text-gray-400 transition-colors mobile-nav-link">Process</a>
+                    <a href="#about" class="text-base font-medium text-white hover:text-gray-400 transition-colors mobile-nav-link">About</a>
+                    <a href="#faq" class="text-base font-medium text-white hover:text-gray-400 transition-colors mobile-nav-link">FAQ</a>
+                    <a href="#contact" class="bg-white text-black px-5 py-3 text-center font-medium hover:bg-gray-200 transition-colors mobile-nav-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="pt-20 md:pt-24 min-h-screen flex items-center bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Left: Text Content -->
+                <div class="order-2 lg:order-1">
+                    <p class="animate-on-scroll text-sm md:text-base font-medium text-gray-400 uppercase tracking-wider mb-4">
+                        Websites for Nairobi businesses
+                    </p>
+                    <h1 class="animate-on-scroll delay-100 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white">
+                        Simple websites for Nairobi businesses in 7 days
+                    </h1>
+                    <p class="animate-on-scroll delay-200 text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-xl">
+                        We build clean, mobile-first websites that turn Instagram and Google visitors into real WhatsApp bookings for salons, restaurants, clinics, and local service businesses.
+                    </p>
+                    <div class="animate-on-scroll delay-300 flex flex-col sm:flex-row gap-4 mb-6">
+                        <!-- Primary CTA - Links to contact form -->
+                        <a href="#contact" class="inline-flex items-center justify-center bg-white text-black px-8 py-4 text-base font-semibold hover:bg-gray-200 transition-colors rounded-full">
+                            Start Your Project
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                        <!-- Secondary CTA -->
+                        <a href="#portfolio" class="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 text-base font-semibold hover:bg-white hover:text-black transition-colors rounded-full">
+                            View Demo Websites
+                        </a>
+                    </div>
+                    <p class="animate-on-scroll delay-400 text-sm text-gray-500 flex flex-wrap items-center gap-2">
+                        <span>Based in Nairobi</span>
+                        <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
+                        <span>Fast delivery</span>
+                        <span class="w-1 h-1 bg-gray-600 rounded-full"></span>
+                        <span>Clear pricing</span>
+                    </p>
+                </div>
+
+                <!-- Right: Hero Image -->
+                <div class="order-1 lg:order-2 animate-on-scroll animate-from-right">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop&auto=format" alt="Web designer working on laptop" class="w-full h-auto grayscale opacity-90 hover:opacity-100 transition-opacity">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO I SERVE SECTION -->
+    <section id="services" class="py-20 md:py-28 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="animate-on-scroll text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+                    Who We Work With
+                </h2>
+                <p class="animate-on-scroll delay-100 text-lg text-gray-400 leading-relaxed">
+                    We specialize in building websites for local businesses in who want to turn their online presence into real customer bookings and calls.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                <!-- Business Type 1 -->
+                <div class="animate-on-scroll delay-100 bg-[#111111] p-8 border border-[#222222] hover:border-white transition-colors">
+                    <div class="w-14 h-14 mb-6 border-2 border-white rounded-full flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-white">Salons, Barbers & Spas</h3>
+                    <p class="text-gray-400 text-sm">Get more bookings directly via WhatsApp with a beautiful online presence.</p>
+                </div>
+
+                <!-- Business Type 2 -->
+                <div class="animate-on-scroll delay-200 bg-[#111111] p-8 border border-[#222222] hover:border-white transition-colors">
+                    <div class="w-14 h-14 mb-6 border-2 border-white rounded-full flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-white">Restaurants & Cafés</h3>
+                    <p class="text-gray-400 text-sm">Showcase your menu and location to hungry customers searching online.</p>
+                </div>
+
+                <!-- Business Type 3 -->
+                <div class="animate-on-scroll delay-300 bg-[#111111] p-8 border border-[#222222] hover:border-white transition-colors">
+                    <div class="w-14 h-14 mb-6 border-2 border-white rounded-full flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-white">Clinics & Dentists</h3>
+                    <p class="text-gray-400 text-sm">Build trust with patients and make appointment booking effortless.</p>
+                </div>
+
+                <!-- Business Type 4 -->
+                <div class="animate-on-scroll delay-400 bg-[#111111] p-8 border border-[#222222] hover:border-white transition-colors">
+                    <div class="w-14 h-14 mb-6 border-2 border-white rounded-full flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-white">Local Shops & Services</h3>
+                    <p class="text-gray-400 text-sm">Stand out from competitors with a professional online storefront.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="py-20 md:py-28 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="animate-on-scroll text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+                    Demo Websites
+                </h2>
+                <p class="animate-on-scroll delay-100 text-lg text-gray-400 leading-relaxed">
+                    These are example layouts showcasing what's possible. Your site will be customized to match your brand, content, and business goals.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Portfolio Card 1 -->
+                <div class="animate-on-scroll delay-100 portfolio-card bg-[#111111] border border-[#222222] overflow-hidden">
+                    <!-- REPLACE PLACEHOLDER WITH REAL SCREENSHOT -->
+                     <div class="aspect-video overflow-hidden">
+                    <img src="images/demo1.png"
+                    alt="Real Estate Company Website "
+                    class="w-full h-full object-cover">
+                 </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Real Estate Company Website  </h3>
+                        <p class="text-gray-400 mb-4">A clean, appetizing layout perfect for real estate company to showcase properties and services.</p>
+                        <!-- UPDATE HREF TO YOUR DEMO URL -->
+                        <a href="#demo1" class="inline-flex items-center text-white font-medium hover:text-gray-400 transition-colors">
+                            View Demo
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Portfolio Card 2 -->
+                <div class="animate-on-scroll delay-200 portfolio-card bg-[#111111] border border-[#222222] overflow-hidden">
+                    <div class="aspect-video overflow-hidden">
+                         <img src="images/demo2.png"
+                          alt="Italian Kitchens"
+                         class="w-full h-full object-cover">
+                     </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Italian Kitchens</h3>
+                        <p class="text-gray-400 mb-4">Elegant design for Kitchen and bathroom remodelling businesses with service listings, pricing, and WhatsApp booking.</p>
+                        <a href="#demo2" class="inline-flex items-center text-white font-medium hover:text-gray-400 transition-colors">
+                            View Demo
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+            </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="py-20 md:py-28 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="animate-on-scroll text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+                    Packages & Pricing
+                </h2>
+                <p class="animate-on-scroll delay-100 text-lg text-gray-400 leading-relaxed">
+                    Transparent pricing that fits your budget. Choose a package or let's discuss a custom solution for your needs.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Starter Package -->
+                <div class="animate-on-scroll delay-100 bg-[#111111] border border-[#222222] p-8 flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Starter Website</h3>
+                        <div class="flex items-baseline">
+                            <span class="text-sm text-gray-500">from</span>
+                            <span class="text-3xl font-bold ml-2 text-white">KES 25,000</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">1–3 pages (Home, About, Contact)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Mobile-friendly design</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">WhatsApp & click-to-call buttons</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Google Map & contact form</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Basic on-page SEO</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">1 round of revisions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Delivery in 5–7 days</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center border-2 border-white text-white px-6 py-3 font-semibold hover:bg-white hover:text-black transition-colors">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Business Package (Popular) -->
+                <div class="animate-on-scroll delay-200 pricing-popular bg-[#111111] border-2 border-white p-8 flex flex-col relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-black px-4 py-1 text-sm font-medium">
+                        Most Popular
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Business Website</h3>
+                        <div class="flex items-baseline">
+                            <span class="text-sm text-gray-500">from</span>
+                            <span class="text-3xl font-bold ml-2 text-white">KES 50,000</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Up to 7 pages (Home, About, Services, Pricing, FAQ, Gallery, Contact)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Strong 'Book on WhatsApp' calls-to-action</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Google Business Profile setup/cleanup</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Basic blog/news section (optional)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Analytics setup</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">2 rounds of revisions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Delivery in 7–10 days</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center bg-white text-black px-6 py-3 font-semibold hover:bg-gray-200 transition-colors">
+                        Get Started
+                    </a>
+                </div>
+
+                <!-- Maintenance Package -->
+                <div class="animate-on-scroll delay-300 bg-[#111111] border border-[#222222] p-8 flex flex-col">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-semibold mb-2 text-white">Maintenance</h3>
+                        <div class="flex items-baseline">
+                            <span class="text-sm text-gray-500">from</span>
+                            <span class="text-3xl font-bold ml-2 text-white">KES 3,500</span>
+                            <span class="text-gray-500 ml-1">/month</span>
+                        </div>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-grow">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Hosting & domain management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Security updates & backups</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Small content changes each month</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-3 mt-0.5 text-white flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            </svg>
+                            <span class="text-gray-300">Basic monthly performance report</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center border-2 border-white text-white px-6 py-3 font-semibold hover:bg-white hover:text-black transition-colors">
+                        Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS SECTION -->
+    <section id="process" class="py-20 md:py-28 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="animate-on-scroll text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+                    How It Works
+                </h2>
+                <p class="animate-on-scroll delay-100 text-lg text-gray-400 leading-relaxed">
+                    A simple, stress-free process from first chat to launch day. No confusing tech jargon.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Step 1 -->
+                <div class="animate-on-scroll delay-100 text-center md:text-left">
+                    <div class="w-16 h-16 mx-auto md:mx-0 mb-6 bg-white text-black rounded-full flex items-center justify-center text-2xl font-bold">
+                        1
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Quick Chat</h3>
+                    <p class="text-gray-400">A 15–20 minute call or WhatsApp chat to understand your business, goals, and what you need from your website.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="animate-on-scroll delay-200 text-center md:text-left">
+                    <div class="w-16 h-16 mx-auto md:mx-0 mb-6 bg-white text-black rounded-full flex items-center justify-center text-2xl font-bold">
+                        2
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Content & First Draft</h3>
+                    <p class="text-gray-400">You share your content (text, photos, logo) and I create the first draft of your website within a few days.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="animate-on-scroll delay-300 text-center md:text-left">
+                    <div class="w-16 h-16 mx-auto md:mx-0 mb-6 bg-white text-black rounded-full flex items-center justify-center text-2xl font-bold">
+                        3
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Revisions & Launch</h3>
+                    <p class="text-gray-400">We review together, make adjustments based on your feedback, and then launch your site live for the world to see.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="animate-on-scroll delay-400 text-center md:text-left">
+                    <div class="w-16 h-16 mx-auto md:mx-0 mb-6 bg-white text-black rounded-full flex items-center justify-center text-2xl font-bold">
+                        4
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-white">Ongoing Support</h3>
+                    <p class="text-gray-400">Optional monthly maintenance to keep your site secure, updated, and running smoothly so you can focus on your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 md:py-28 bg-[#0a0a0a]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <!-- Left: Image Placeholder -->
+                <div class="animate-on-scroll animate-from-left">
+                    <img src="images/duke.png"
+                  alt="About QL3 MEDIA"
+                 class="w-full h-auto grayscale hover:grayscale-0 transition">
+                </div>
+                    <!-- REPLACE WITH YOUR PHOTO: <img src="your-photo.jpg" alt="About" class="w-full h-auto grayscale"> -->
+
+                <!-- Right: Text Content -->
+                <div>
+                    <h2 class="animate-on-scroll text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+                        About QL3 MEDIA
+                    </h2>
+                    <div class="animate-on-scroll delay-100">
+                        <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                            We are a Nairobi-based web design agency that helps local businesses look professional online and turn clicks into real customers.
+                        </p>
+                
+                        <p class="text-lg text-gray-300 leading-relaxed mb-6">
+                            We build clean, mobile-first websites that show your services, prices and location clearly, make it one tap to call or WhatsApp you, and help you show up better on Google when people search in your area.
+                        </p>
+
+                         <p class="text-lg text-gray-300 leading-relaxed mb-8">
+                            We keep things straightforward: no technical jargon, no hidden costs, and no endless back-and-forth. We agree what you need, I guide you through the content, and within a week or two you have a website you’re proud to share with customers. Because we focus on Nairobi and the surrounding areas, every site we build is designed for how your customers really behave—on their phones, on WhatsApp, and on Google Maps—so your website doesn’t just look good, it actually supports your day-to-day business.</p>
+                         </p>
+                    </div>
+                    <div class="animate-on-scroll delay-200 space-y-4">
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 mr-4 mt-1 border-2 border-white rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                            </div>
+                            <span class="text-gray-300">Focused on local businesses in Kenya</span>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 mr-4 mt-1 border-2 border-white rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                            </div>
+                            <span class="text-gray-300">Fast delivery and clear communication</span>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-6 h-6 mr-4 mt-1 border-2 border-white rounded-full flex items-center justify-center flex-shrink-0">
+                                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                </svg>
+                            </div>
+                            <span class="text-gray-300">Mobile-first design, WhatsApp-focused</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-20 md:py-28 bg-black">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="animate-on-scroll text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+                    Frequently Asked Questions
+                </h2>
+                <p class="animate-on-scroll delay-100 text-lg text-gray-400">
+                    Quick answers to common questions about working together.
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="animate-on-scroll delay-100 faq-item border border-[#222222]">
+                    <button class="faq-question w-full flex items-center justify-between p-6 text-left hover:bg-[#111111] transition-colors">
+                        <span class="text-lg font-medium pr-4 text-white">How long will my website take?</span>
+                        <span class="faq-icon text-2xl font-light flex-shrink-0 text-white">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-6 text-gray-400">
+                            Most websites are completed within 5–10 business days, depending on the package and how quickly you can provide content (text, images, logo). Starter sites are often ready in under a week.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="animate-on-scroll delay-200 faq-item border border-[#222222]">
+                    <button class="faq-question w-full flex items-center justify-between p-6 text-left hover:bg-[#111111] transition-colors">
+                        <span class="text-lg font-medium pr-4 text-white">I don't have a domain or hosting. Can you help?</span>
+                        <span class="faq-icon text-2xl font-light flex-shrink-0 text-white">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-6 text-gray-400">
+                            Absolutely! I can help you register a domain name and set up hosting. This is included as part of the maintenance package, or I can guide you through setting it up yourself if you prefer.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="animate-on-scroll delay-300 faq-item border border-[#222222]">
+                    <button class="faq-question w-full flex items-center justify-between p-6 text-left hover:bg-[#111111] transition-colors">
+                        <span class="text-lg font-medium pr-4 text-white">Do you ask for full payment upfront?</span>
+                        <span class="faq-icon text-2xl font-light flex-shrink-0 text-white">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-6 text-gray-400">
+                            No, I typically require a 50% deposit to begin work, with the remaining 50% due upon completion before the site goes live. For maintenance packages, payment is monthly.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="animate-on-scroll delay-400 faq-item border border-[#222222]">
+                    <button class="faq-question w-full flex items-center justify-between p-6 text-left hover:bg-[#111111] transition-colors">
+                        <span class="text-lg font-medium pr-4 text-white">Will my site work well on phones?</span>
+                        <span class="faq-icon text-2xl font-light flex-shrink-0 text-white">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-6 text-gray-400">
+                            Yes! All websites I build are mobile-first, meaning they're designed to look great and work perfectly on smartphones first, then adapted for tablets and desktops. Most of your customers will visit from their phones.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="animate-on-scroll delay-500 faq-item border border-[#222222]">
+                    <button class="faq-question w-full flex items-center justify-between p-6 text-left hover:bg-[#111111] transition-colors">
+                        <span class="text-lg font-medium pr-4 text-white">What if I need changes after the site is live?</span>
+                        <span class="faq-icon text-2xl font-light flex-shrink-0 text-white">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="px-6 pb-6 text-gray-400">
+                            Small text and image updates are included in the maintenance package. For larger changes or new features, we can discuss a separate quote. We are always here to help your site grow with your business.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 md:py-28 bg-[#0a0a0a]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="animate-on-scroll text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+                    Let's Talk About Your Website
+                </h2>
+                <p class="animate-on-scroll delay-100 text-lg text-gray-400 max-w-2xl mx-auto">
+                    Ready to get started? Send me a message on WhatsApp for the fastest response, or fill out the form below.
+                </p>
+            </div>
+
+            <!-- WhatsApp Button -->
+             <div class="animate-on-scroll delay-200 text-center mb-12">
+            <!-- UPDATE WHATSAPP LINK -->
+            <a href="https://wa.me/254768656020?text=Hi%20I%20want%20a%20website" target="_blank" rel="noopener" class="inline-flex items-center justify-center bg-white text-black px-10 py-4 text-lg font-semibold hover:bg-gray-200 transition-colors">
+                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                WhatsApp Me
+            </a>
+        </div>
+        <!-- Contact Form -->
+            <div class="animate-on-scroll delay-300 bg-[#111111] border border-[#222222] p-8 md:p-10">
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Your Name *</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-black border border-[#333333] text-white placeholder-gray-600 focus:border-white focus:outline-none transition-colors" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label for="business" class="block text-sm font-medium text-gray-300 mb-2">Business Name *</label>
+                            <input type="text" id="business" name="business" required class="w-full px-4 py-3 bg-black border border-[#333333] text-white placeholder-gray-600 focus:border-white focus:outline-none transition-colors" placeholder="Your Business Name">
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address *</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-black border border-[#333333] text-white placeholder-gray-600 focus:border-white focus:outline-none transition-colors" placeholder="john@example.com">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">Phone / WhatsApp *</label>
+                            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 bg-black border border-[#333333] text-white placeholder-gray-600 focus:border-white focus:outline-none transition-colors" placeholder="+254 700 000 000">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="business-type" class="block text-sm font-medium text-gray-300 mb-2">Type of Business</label>
+                        <select id="business-type" name="business-type" class="w-full px-4 py-3 bg-black border border-[#333333] text-white focus:border-white focus:outline-none transition-colors">
+                            <option value="">Select your business type...</option>
+                            <option value="salon-spa">Salon, Barber, or Spa</option>
+                            <option value="restaurant">Restaurant or Café</option>
+                            <option value="clinic">Clinic or Dentist</option>
+                            <option value="shop">Local Shop</option>
+                            <option value="service">Service Provider</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Tell me about your project</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-black border border-[#333333] text-white placeholder-gray-600 focus:border-white focus:outline-none transition-colors resize-none" placeholder="What kind of website do you need? Any specific features or goals?"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full md:w-auto bg-white text-black px-10 py-4 font-semibold hover:bg-gray-200 transition-colors">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+                <!-- UPDATE EMAIL ADDRESS -->
+                <p class="text-center text-gray-500 text-sm mt-6">Or email me directly at <a href="mailto:dukemuhia@gmail.com" class="text-white underline hover:text-gray-300">dukemuhia@gmail.com</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#111111] text-white py-12 border-t border-[#222222]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <!-- Logo / Agency Name 
+                <div class="mb-6 md:mb-0 flex items-center">
+                    <div class="w-10 h-10 bg-white flex items-center justify-center">
+                        REPLACE WITH YOUR LOGO 
+                        <span class="text-black font-bold text-lg">L</span>
+                    </div>
+                </div>  --> <span class="ml-3 font-semibold text-lg">QL3 MEDIA</span>
+
+                <!-- Social Links -->
+                <div class="flex items-center space-x-6 mb-6 md:mb-0">
+                    <!-- UPDATE SOCIAL LINKS -->
+                    <a href="https://instagram.com/ql3media" target="_blank" rel="noopener" class="hover:text-gray-400 transition-colors" aria-label="Instagram">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://facebook.com/yourusername" target="_blank" rel="noopener" class="hover:text-gray-400 transition-colors" aria-label="Facebook">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Copyright -->
+                <p class="text-gray-500 text-sm">
+                    © <span id="current-year">2024</span> [QL3 MEDIA]. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <!-- UPDATE WHATSAPP LINK -->
+    <a href="https://wa.me/254768656020?text=Hi%20I%20want%20a%20website" target="_blank" rel="noopener" class="whatsapp-float fixed bottom-6 right-6 w-14 h-14 bg-white text-black rounded-full flex items-center justify-center shadow-lg hover:bg-gray-200 transition-colors z-40" aria-label="Chat on WhatsApp">
+        <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenuClose = document.getElementById('mobile-menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
+
+            question.addEventListener('click', () => {
+                const isOpen = item.classList.contains('open');
+
+                // Close all other items
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('open');
+                    otherItem.querySelector('.faq-answer').classList.remove('open');
+                });
+
+                // Toggle current item
+                if (!isOpen) {
+                    item.classList.add('open');
+                    answer.classList.add('open');
+                }
+            });
+        });
+
+        // Scroll Animation using Intersection Observer
+        const animateOnScroll = () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        };
+
+        // Initialize animations
+        animateOnScroll();
+
+        // Update copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Form submission (placeholder - connect to your backend)
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would typically send the data to your backend
+            // For now, we'll just show an alert
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Active navigation link highlighting
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('nav a[href^="#"]');
+
+        const highlightNav = () => {
+            const scrollY = window.scrollY;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                const sectionId = section.getAttribute('id');
+
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    navLinks.forEach(link => {
+                        link.classList.remove('font-bold');
+                        if (link.getAttribute('href') === `#${sectionId}`) {
+                            link.classList.add('font-bold');
+                        }
+                    });
+                }
+            });
+        };
+
+        window.addEventListener('scroll', highlightNav);
+    </script>
+
+</body>
+</html>
