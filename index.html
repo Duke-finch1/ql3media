@@ -966,7 +966,7 @@
   window.addEventListener('scroll', highlightNav);
 
   // Contact form -> Formspree (stay on page, show thank-you text)
-   /*  const form = document.getElementById('contact-form');
+   const form = document.getElementById('contact-form');
   const statusEl = document.getElementById('form-status');
 
   if (form && statusEl) {
@@ -987,7 +987,7 @@
           headers: {
             'Accept': 'application/json'
           }
-        }); */
+        }); 
 
         if (response.ok) {
           statusEl.classList.remove('text-gray-400', 'text-red-400');
@@ -1013,6 +1013,7 @@
 </body>
 
 </html>
+
 
 
 
