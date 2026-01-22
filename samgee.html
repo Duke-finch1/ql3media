@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sam&Gee | Premium Land Sales in Kenya</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        /* ============================================== */
+        /* 🖼️ HERO BACKGROUND IMAGE                      */
+        /* Replace the URL below with your own image     */
+        /* ============================================== */
+        .hero-bg {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .property-card:hover {
+            transform: translateY(-10px);
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .nav-link::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 2px;
+            background: #16a34a;
+            transition: width 0.3s;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-white">
+                        <span class="text-green-500">Sam</span>&<span class="text-amber-500">Gee</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-white hover:text-green-400 transition">Home</a>
+                    <a href="#about" class="nav-link text-white hover:text-green-400 transition">About</a>
+                    <a href="#properties" class="nav-link text-white hover:text-green-400 transition">Properties</a>
+                    <a href="#services" class="nav-link text-white hover:text-green-400 transition">Services</a>
+                    <a href="#testimonials" class="nav-link text-white hover:text-green-400 transition">Testimonials</a>
+                    <a href="#contact" class="nav-link text-white hover:text-green-400 transition">Contact</a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-900 bg-opacity-95">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#home" class="block text-white hover:text-green-400">Home</a>
+                <a href="#about" class="block text-white hover:text-green-400">About</a>
+                <a href="#properties" class="block text-white hover:text-green-400">Properties</a>
+                <a href="#services" class="block text-white hover:text-green-400">Services</a>
+                <a href="#testimonials" class="block text-white hover:text-green-400">Testimonials</a>
+                <a href="#contact" class="block text-white hover:text-green-400">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ============================================== -->
+    <!-- 🏠 HERO SECTION - Main Banner at the top -->
+    <!-- ============================================== -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center">
+        <div class="text-center text-white px-4">
+            
+            <!-- ✏️ EDIT: Main Headline - Change the text between the tags -->
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
+                Own Your Piece of <span class="text-green-400">Kenya</span>
+            </h1>
+            
+            <!-- ✏️ EDIT: Subtitle/Description below headline -->
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto text-gray-200">
+                Premium land for sale across Kenya's most sought-after locations. Invest in your future with Sam&Gee.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#properties" class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-lg font-semibold transition transform hover:scale-105">
+                    <i class="fas fa-map-marked-alt mr-2"></i>View Properties
+                </a>
+                <a href="#contact" class="bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 text-white px-8 py-4 rounded-lg font-semibold transition">
+                    <i class="fas fa-phone mr-2"></i>Contact Us
+                </a>
+            </div>
+            <!-- ✏️ EDIT: Statistics Numbers - Change the numbers and labels -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+                <div class="text-center">
+                    <p class="text-4xl font-bold text-green-400">500+</p>  <!-- Change "500+" to your number -->
+                    <p class="text-gray-300">Plots Sold</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-4xl font-bold text-green-400">15+</p>  <!-- Change "15+" to your number -->
+                    <p class="text-gray-300">Counties</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-4xl font-bold text-green-400">1000+</p>  <!-- Change "1000+" to your number -->
+                    <p class="text-gray-300">Happy Clients</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-4xl font-bold text-green-400">10+</p>  <!-- Change "10+" to your number -->
+                    <p class="text-gray-300">Years Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 📖 ABOUT SECTION - Company Information -->
+    <!-- ============================================== -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <!-- 🖼️ EDIT: About Section Image - Replace the URL in src="..." -->
+                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80" alt="About Sam&Gee" class="rounded-2xl shadow-2xl">
+                </div>
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                        About <span class="text-green-600">Sam</span>&<span class="text-amber-500">Gee</span>
+                    </h2>
+                    
+                    <!-- ✏️ EDIT: About Paragraph 1 - Your company story -->
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Sam&Gee is a trusted Kenyan land selling company with over a decade of experience in helping individuals and families acquire their dream properties. We specialize in prime land across Kenya's most promising regions.
+                    </p>
+                    
+                    <!-- ✏️ EDIT: About Paragraph 2 - Your company values -->
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        Our commitment to transparency, integrity, and customer satisfaction has made us a leading name in Kenya's real estate sector. We handle all legal processes, ensuring you get clean title deeds and hassle-free ownership.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Verified Properties</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Clean Title Deeds</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Flexible Payment</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                            <span class="text-gray-700">Free Site Visits</span>
+                        </div>
+                    </div>
+                    <a href="#contact" class="inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-semibold transition">
+                        Learn More About Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- 🏡 PROPERTIES SECTION - Your Land Listings -->
+    <!-- To add/edit properties, find each "Property Card" below -->
+    <!-- ============================================== -->
+    <section id="properties" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Featured Properties</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Discover our handpicked selection of prime land across Kenya's most desirable locations.</p>
+            </div>
+            
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button onclick="filterProperties('all')" class="filter-btn active bg-green-600 text-white px-6 py-2 rounded-full transition hover:bg-green-700">All</button>
+                <button onclick="filterProperties('nairobi')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full transition hover:bg-green-600 hover:text-white">Nairobi</button>
+                <button onclick="filterProperties('coast')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full transition hover:bg-green-600 hover:text-white">Coast</button>
+                <button onclick="filterProperties('rift')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full transition hover:bg-green-600 hover:text-white">Rift Valley</button>
+                <button onclick="filterProperties('central')" class="filter-btn bg-gray-200 text-gray-700 px-6 py-2 rounded-full transition hover:bg-green-600 hover:text-white">Central</button>
+            </div>
+
+            <div id="properties-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- ========== PROPERTY CARD 1 ========== -->
+                <!-- 🏡 Change: image URL, property name, location, size, price -->
+                <div class="property-card bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300" data-category="nairobi">
+                    <div class="relative">
+                        <!-- 🖼️ Property 1 Image - Replace URL in src="..." -->
+                        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Konza City Land" class="w-full h-56 object-cover">
+                        <span class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm">For Sale</span>
+                        <span class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-sm">Hot Deal</span>
+                    </div>
+                    <div class="p-6">
+                        <!-- ✏️ Property 1 Name -->
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Konza Technopolis</h3>
+                        <!-- ✏️ Property 1 Location -->
+                        <p class="text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-green-500 mr-2"></i>Machakos County</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <!-- ✏️ Property 1 Size -->
+                            <span class="text-gray-600"><i class="fas fa-ruler-combined mr-2"></i>1/8 Acre</span>
+                            <span class="text-gray-600"><i class="fas fa-file-alt mr-2"></i>Title Ready</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <!-- ✏️ Property 1 Price -->
+                            <p class="text-2xl font-bold text-green-600">KES 450,000</p>
+                            <button onclick="openModal('Konza Technopolis')" class="bg-gray-900 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">Inquire</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 2 -->
+                <div class="property-card bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300" data-category="coast">
+                    <div class="relative">
+                        <img src="https://i.ibb.co/HT9xhDjf/plot-2.jpg" alt="Machakos Garden Estate" class="w-full h-56 object-cover">
+                        <span class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm">For Sale</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Machakos Garden Estate</h3>
+                        <p class="text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-green-500 mr-2"></i>Machakos County</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600"><i class="fas fa-ruler-combined mr-2"></i>1/4 Acre</span>
+                            <span class="text-gray-600"><i class="fas fa-file-alt mr-2"></i>Title Ready</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <p class="text-2xl font-bold text-green-600">KES 2,200,000</p>
+                            <button onclick="openModal('Malindi Beach Front')" class="bg-gray-900 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">Inquire</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 3 -->
+                <div class="property-card bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300" data-category="rift">
+                    <div class="relative">
+                        <img src="https://i.ibb.co/Zzq5Tj3M/plot-1.jpg" alt="Nakuru Farm" class="w-full h-56 object-cover">
+                        <span class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm">For Sale</span>
+                        <span class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm">Limited</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Nakuru Heights</h3>
+                        <p class="text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-green-500 mr-2"></i>Nakuru County</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600"><i class="fas fa-ruler-combined mr-2"></i>1 Acre</span>
+                            <span class="text-gray-600"><i class="fas fa-file-alt mr-2"></i>Title Ready</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <p class="text-2xl font-bold text-green-600">KES 2,500,000</p>
+                            <button onclick="openModal('Naivasha Prime Land')" class="bg-gray-900 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">Inquire</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 4 -->
+                <div class="property-card bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300" data-category="central">
+                    <div class="relative">
+                        <img src="https://mkaazirealestate.com/wp-content/uploads/2024/02/The-Course-at-Thika-Greens-1170x785.jpg" alt="Thika Land" class="w-full h-56 object-cover">
+                        <span class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm">For Sale</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Thika Greens Estate</h3>
+                        <p class="text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-green-500 mr-2"></i>Kiambu County</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600"><i class="fas fa-ruler-combined mr-2"></i>1/8 Acre</span>
+                            <span class="text-gray-600"><i class="fas fa-file-alt mr-2"></i>Title Ready</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <p class="text-2xl font-bold text-green-600">KES 850,000</p>
+                            <button onclick="openModal('Thika Greens Estate')" class="bg-gray-900 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">Inquire</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 5 -->
+                <div class="property-card bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300" data-category="nairobi">
+                    <div class="relative">
+                        <img src="https://i.ibb.co/Gv3ZPCN0/plot-3.jpg" alt="Ruiru Land" class="w-full h-56 object-cover">
+                        <span class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm">For Sale</span>
+                        <span class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-sm">Hot Deal</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Ruiru Eastern Bypass</h3>
+                        <p class="text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-green-500 mr-2"></i>Kiambu County</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600"><i class="fas fa-ruler-combined mr-2"></i>50x100</span>
+                            <span class="text-gray-600"><i class="fas fa-file-alt mr-2"></i>Title Ready</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <p class="text-2xl font-bold text-green-600">KES 3,200,000</p>
+                            <button onclick="openModal('Ruiru Eastern Bypass')" class="bg-gray-900 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">Inquire</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 6 -->
+                <div class="property-card bg-white rounded-2xl shadow-lg overflow-hidden transition duration-300" data-category="coast">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80" alt="Diani Land" class="w-full h-56 object-cover">
+                        <span class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm">For Sale</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Diani Beach Paradise</h3>
+                        <p class="text-gray-500 mb-4"><i class="fas fa-map-marker-alt text-green-500 mr-2"></i>Kwale County</p>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600"><i class="fas fa-ruler-combined mr-2"></i>1/2 Acre</span>
+                            <span class="text-gray-600"><i class="fas fa-file-alt mr-2"></i>Title Ready</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <p class="text-2xl font-bold text-green-600">KES 4,500,000</p>
+                            <button onclick="openModal('Diani Beach Paradise')" class="bg-gray-900 hover:bg-green-600 text-white px-4 py-2 rounded-lg transition">Inquire</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">We offer comprehensive land solutions to make your property ownership journey smooth and secure.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 bg-gray-800 rounded-2xl hover:bg-gray-700 transition">
+                    <div class="bg-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-search-location text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Land Sourcing</h3>
+                    <p class="text-gray-400">We identify and verify prime land across Kenya for our clients.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-800 rounded-2xl hover:bg-gray-700 transition">
+                    <div class="bg-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-file-signature text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Title Processing</h3>
+                    <p class="text-gray-400">Complete title deed processing and transfer services.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-800 rounded-2xl hover:bg-gray-700 transition">
+                    <div class="bg-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-car text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Free Site Visits</h3>
+                    <p class="text-gray-400">Complimentary transportation to view properties.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-800 rounded-2xl hover:bg-gray-700 transition">
+                    <div class="bg-green-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hand-holding-usd text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Flexible Payment</h3>
+                    <p class="text-gray-400">Convenient installment plans up to 12 months.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Hear from our satisfied customers who have successfully acquired their dream properties.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Client" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900">James Mwangi</h4>
+                            <p class="text-gray-500">Nairobi, Kenya</p>
+                        </div>
+                    </div>
+                    <div class="flex text-amber-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600">"Sam&Gee made my dream of owning land a reality. The process was transparent and they delivered my title deed within 3 months. Highly recommended!"</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&q=80" alt="Client" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Grace Wanjiku</h4>
+                            <p class="text-gray-500">Mombasa, Kenya</p>
+                        </div>
+                    </div>
+                    <div class="flex text-amber-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600">"I purchased a plot in Malindi through Sam&Gee. Their team was professional and the flexible payment plan helped me afford my investment."</p>
+                </div>
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Client" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-bold text-gray-900">Peter Ochieng</h4>
+                            <p class="text-gray-500">Kisumu, Kenya</p>
+                        </div>
+                    </div>
+                    <div class="flex text-amber-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-gray-600">"Excellent service! The free site visit convinced me to buy. Now I own two plots in Nakuru thanks to Sam&Gee's guidance and support."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get In Touch</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Ready to own your piece of Kenya? Contact us today and let's make it happen!</p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Full Name</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="+254 7XX XXX XXX">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="john@example.com">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Property Interest</label>
+                            <select id="interest" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                                <option value="">Select a region</option>
+                                <option value="nairobi">Nairobi Metropolitan</option>
+                                <option value="coast">Coastal Region</option>
+                                <option value="rift">Rift Valley</option>
+                                <option value="central">Central Kenya</option>
+                                <option value="other">Other Regions</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Tell us about your land requirements..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg font-semibold transition">
+                            <i class="fas fa-paper-plane mr-2"></i>Send Message
+                        </button>
+                    </form>
+                </div>
+                <div class="space-y-8">
+                    <!-- ✏️ EDIT: Your Office Address -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg flex items-start">
+                        <div class="bg-green-100 p-4 rounded-full mr-4">
+                            <i class="fas fa-map-marker-alt text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">Our Office</h4>
+                            <p class="text-gray-600">Westlands Business Centre<br>Waiyaki Way, Nairobi, Kenya</p>
+                        </div>
+                    </div>
+                    
+                    <!-- ✏️ EDIT: Your Phone Numbers -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg flex items-start">
+                        <div class="bg-green-100 p-4 rounded-full mr-4">
+                            <i class="fas fa-phone-alt text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">Phone Numbers</h4>
+                            <p class="text-gray-600">+254 700 123 456<br>+254 733 987 654</p>
+                        </div>
+                    </div>
+                    
+                    <!-- ✏️ EDIT: Your Email Addresses -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg flex items-start">
+                        <div class="bg-green-100 p-4 rounded-full mr-4">
+                            <i class="fas fa-envelope text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">Email Us</h4>
+                            <p class="text-gray-600">info@samandgee.co.ke<br>sales@samandgee.co.ke</p>
+                        </div>
+                    </div>
+                    
+                    <!-- ✏️ EDIT: Your Working Hours -->
+                    <div class="bg-white p-6 rounded-2xl shadow-lg flex items-start">
+                        <div class="bg-green-100 p-4 rounded-full mr-4">
+                            <i class="fas fa-clock text-green-600 text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-1">Working Hours</h4>
+                            <p class="text-gray-600">Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 3:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">
+                        <span class="text-green-500">Sam</span>&<span class="text-amber-500">Gee</span>
+                    </h3>
+                    <p class="text-gray-400 mb-4">Your trusted partner in land ownership across Kenya. Making property dreams a reality since 2014.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-600 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-600 transition">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#home" class="hover:text-green-400 transition">Home</a></li>
+                        <li><a href="#about" class="hover:text-green-400 transition">About Us</a></li>
+                        <li><a href="#properties" class="hover:text-green-400 transition">Properties</a></li>
+                        <li><a href="#services" class="hover:text-green-400 transition">Services</a></li>
+                        <li><a href="#contact" class="hover:text-green-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Popular Regions</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-green-400 transition">Nairobi</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition">Mombasa</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition">Nakuru</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition">Kiambu</a></li>
+                        <li><a href="#" class="hover:text-green-400 transition">Machakos</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Subscribe to get updates on new properties and offers.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 rounded-l-lg text-gray-900 focus:outline-none">
+                        <button type="submit" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-r-lg transition">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Sam&Gee. All rights reserved. | Powered by <span class="text-green-500">Sam&Gee Ltd</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Inquiry Modal -->
+    <div id="inquiry-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">Property Inquiry</h3>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <p id="modal-property" class="text-green-600 font-medium mb-4"></p>
+            <form id="inquiry-form" class="space-y-4">
+                <input type="text" placeholder="Your Name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <input type="tel" placeholder="Phone Number" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <input type="email" placeholder="Email Address" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                <textarea placeholder="Your Message" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-semibold transition">
+                    Send Inquiry
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 📱 WHATSAPP BUTTON - Floating chat button -->
+    <!-- ✏️ EDIT: Change "254700123456" to your WhatsApp number (no spaces or dashes) -->
+    <!-- ============================================== -->
+    <a href="https://wa.me/254700123456" target="_blank" class="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition transform hover:scale-110 z-40">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-gray-900', 'shadow-lg');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-gray-900', 'shadow-lg');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Property filter
+        function filterProperties(category) {
+            const cards = document.querySelectorAll('.property-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-green-600', 'text-white');
+                btn.classList.add('bg-gray-200', 'text-gray-700');
+            });
+            
+            event.target.classList.remove('bg-gray-200', 'text-gray-700');
+            event.target.classList.add('bg-green-600', 'text-white');
+            
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Modal functions
+        function openModal(propertyName) {
+            document.getElementById('modal-property').textContent = 'Interested in: ' + propertyName;
+            document.getElementById('inquiry-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('inquiry-modal').classList.add('hidden');
+        }
+
+        // Close modal on outside click
+        document.getElementById('inquiry-modal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Form submissions
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! Our team will contact you soon.');
+            this.reset();
+        });
+
+        document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! Our sales team will contact you within 24 hours.');
+            closeModal();
+            this.reset();
+        });
+    </script>
+</body>
+</html>
